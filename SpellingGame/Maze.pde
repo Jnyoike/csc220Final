@@ -4,7 +4,7 @@ class Maze {
   int y;
   int w;
   int cellsAcross;
-  ArrayList cells; //initialize an arraylist of the cells
+  ArrayList<Cell> cells; //initialize an arraylist of the cells
  
   int destinationX;
   int destinationY;
@@ -29,7 +29,7 @@ class Maze {
     cellStack[0] = currentCell;
     //println(currentCell);
     //println(cellStack);
-    cells = new ArrayList();
+    cells = new ArrayList<Cell>();
     for (int i = 0; i < cellsAcross; i++) {
       for (int j=0; j < cellsAcross; j++) {
         Cell c = new Cell(x+j*step,y+i*step,step); //creating new cells and adding them to the arraylist

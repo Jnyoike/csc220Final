@@ -3,7 +3,11 @@ Maze maze;
 Joe jo;
 Ann ann;
 Dictionary dict;
+String word = "CAT";
 Rachel rachel = new Rachel(0, 0, 85, 2);
+Character[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+public Map<Character, PImage> letters = new TreeMap<Character, PImage>();
+
 
 
 //PFont font;
@@ -17,28 +21,40 @@ boolean finished;
 long timer;
  
 int secretMazeSize;
-
- 
+PImage img;
+PImage img1;
+int x = 100;
+int y = 100;
+int i = 1;
 void setup() {
   size(650,650); //size of window
   //size(screen.width,screen.height);
   //font = loadFont("Osaka-60.vlw");
   smooth();
   //background(255,245,235); //sets the background color
-  
   maze = new Maze(width/2-300,height/2-300,600,mazeSizes[0]); //new maze created
   jo = new Joe(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
   finished = false;
   timer = millis(); //start the timer
+  //load images and create the Map
+  for (Character c: alphabet){
+    String imgName = "GameLetters/"+ c +".png";
+    img = loadImage(imgName);
+    letters.put(c, img);
+    
+  }
+  
+  //println(letters);
 }
-
 void draw() {
+ 
   if (!maze.complete) {
     maze.routeStep();
   }
- 
+  
   else {
     if (!finished) {
+      
       background(255);
       maze.display();
  
@@ -50,6 +66,7 @@ void draw() {
  
       //show player initial position
       jo.display();
+      
        
  
       if (jo.x>maze.destinationX && jo.y>maze.destinationY) {
