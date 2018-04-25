@@ -9,7 +9,6 @@ Character[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N',
 public Map<Character, PImage> letters = new TreeMap<Character, PImage>();
 
 
-
 //PFont font;
 
 int[] mazeSizes = {
@@ -22,10 +21,6 @@ long timer;
  
 int secretMazeSize;
 PImage img;
-PImage img1;
-int x = 100;
-int y = 100;
-int i = 1;
 void setup() {
   size(650,650); //size of window
   //size(screen.width,screen.height);
