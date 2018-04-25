@@ -8,7 +8,6 @@ Rachel rachel = new Rachel(0, 0, 85, 2);
 Character[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 public Map<Character, PImage> letters = new TreeMap<Character, PImage>();
 
-
 //PFont font;
 
 int[] mazeSizes = {
@@ -22,13 +21,15 @@ long timer;
 int secretMazeSize;
 PImage img;
 void setup() {
-  size(650,650); //size of window
+  size(650,800); //size of window
   //size(screen.width,screen.height);
   //font = loadFont("Osaka-60.vlw");
   smooth();
   //background(255,245,235); //sets the background color
-  maze = new Maze(width/2-300,height/2-300,600,mazeSizes[0]); //new maze created
+  maze = new Maze(width/2-300,(height/2-300)+50,600,mazeSizes[0]); //new maze created
   jo = new Joe(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
+  dict = new Dictionary("farm_animals.txt");
+  //println(dict);
   finished = false;
   timer = millis(); //start the timer
   //load images and create the Map
@@ -61,6 +62,7 @@ void draw() {
  
       //show player initial position
       jo.display();
+      //dict.display();
       
        
  
