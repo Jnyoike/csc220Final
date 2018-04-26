@@ -21,12 +21,12 @@ int secretMazeSize;
 PImage img;
 PImage img1;
 void setup() {
-  size(650,800); //size of window
+  size(650,650); //size of window
   //size(screen.width,screen.height);
   //font = loadFont("Osaka-60.vlw");
   smooth();
   background(255,245,235); //sets the background color
-  maze = new Maze(width/2-300,(height/2-300)+50,600,mazeSizes[0]); //new maze created
+  maze = new Maze(width/2-300,(height/2-300),600,mazeSizes[0]); //new maze created
   jo = new Joe(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
   dict = new Dictionary("farm_animals.txt");
   //dict.display(dict.pickVal());
@@ -55,8 +55,8 @@ void draw() {
       
       background(255);
       maze.display();
-      fill(255, 255, 0);
-      rect(width/2-300,(height/2-290)-100,600,125);
+      //fill(255, 255, 0);
+      //rect(width/2-300,(height/2-290)-100,600,125);
       
       
  

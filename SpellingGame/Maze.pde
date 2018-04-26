@@ -61,21 +61,18 @@ class Maze {
     destinationY=y+w-step;
     //println(x, y);
     //println(destinationX, destinationY);
-  }
   
   
-  ArrayList<Integer> pickRandomCoord(){
-    ArrayList<Integer> coordXY = new ArrayList<Integer>();
+  
+  
     Random random = new Random();
-    int randomNum = random.nextInt(xyList.size() -1);
+    
+    int randomNum = random.nextInt(xyList.size() - 0+ 1)+ 0;
     coordX = xyList.get(randomNum).get(0);
     coordY = xyList.get(randomNum).get(1);
-    coordXY.add(coordX);
-    coordXY.add(coordY);
-    return coordXY;
-  }
+    
   
-  
+  }  
    //reset the maze
   void reset(int _ca) {
  
