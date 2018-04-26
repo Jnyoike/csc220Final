@@ -1,5 +1,6 @@
 import java.io.*;
 import java.lang.*;
+import java.util.*;
 /**
 *contains the words and their descriptions
 */
@@ -18,7 +19,25 @@ class Dictionary{
       
       
     }
-    println(farm_animals);
+    //println(farm_animals);
+    
+      
+    //pickOne();
+  }
+  void display(){
+    //text(value2, 70,80);
+    
+    
+  }
+  String pickVal(){
+    Map.Entry<String, String>[] keys = farm_animals.entrySet().toArray(new Map.Entry[0]);
+    Random rand = new Random();
+    Map.Entry<String, String> keyValue = keys[rand.nextInt(keys.length)];
+    String value2 = keyValue.getValue();
+    return value2;
+  }
+  String pickKey(){
+    return "hey";
   }
   
 }

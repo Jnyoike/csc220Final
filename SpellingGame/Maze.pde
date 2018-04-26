@@ -1,3 +1,4 @@
+import java.util.*;
 class Maze {
  //initialize variables
   int x;
@@ -5,9 +6,14 @@ class Maze {
   int w;
   int cellsAcross;
   ArrayList<Cell> cells; //initialize an arraylist of the cells
- 
+  
+  int coordX;
+  int coordY;
+  ArrayList<ArrayList<Integer>> xyList;
+  
   int destinationX;
   int destinationY;
+  
   int totalCells;
   int visitedCells;
   int currentCell;
@@ -27,8 +33,8 @@ class Maze {
     visitedCells = 1;
     currentCell = totalCells-1;
     cellStack[0] = currentCell;
-    //println(currentCell);
-    //println(cellStack);
+    
+    
     cells = new ArrayList<Cell>();
     for (int i = 0; i < cellsAcross; i++) {
       for (int j=0; j < cellsAcross; j++) {
@@ -36,6 +42,16 @@ class Maze {
         cells.add(c);
       }
     }
+     xyList =  new ArrayList<ArrayList<Integer>>();
+     for (int i = 0; i< cells.size(); i++){
+       ArrayList<Integer> coord = new ArrayList<Integer>();
+       Cell c = cells.get(i);
+       Integer x = new Integer (c.x);
+       Integer y = new Integer (c.y);
+       coord.add(x);
+       coord.add(y);
+       xyList.add(coord);
+     }
     complete = false;
  
     Cell lastCell=(Cell) cells.get(cells.size()-1);
@@ -46,6 +62,20 @@ class Maze {
     //println(x, y);
     //println(destinationX, destinationY);
   }
+  
+  
+  ArrayList<Integer> pickRandomCoord(){
+    ArrayList<Integer> coordXY = new ArrayList<Integer>();
+    Random random = new Random();
+    int randomNum = random.nextInt(xyList.size() -1);
+    coordX = xyList.get(randomNum).get(0);
+    coordY = xyList.get(randomNum).get(1);
+    coordXY.add(coordX);
+    coordXY.add(coordY);
+    return coordXY;
+  }
+  
+  
    //reset the maze
   void reset(int _ca) {
  
@@ -89,6 +119,9 @@ class Maze {
       Cell c = (Cell) cells.get(i);
       c.display(step/16); 
     }
+    //text = new Text(txt);
+    //text.display();
+  
   }
  
   boolean[] travelThrough(int _x, int _y) {

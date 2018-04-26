@@ -5,6 +5,7 @@ class Joe{
   int destinationY;
   int s;
   color c;
+  int radius;
  
   int speed;
  
@@ -16,6 +17,7 @@ class Joe{
     s=_s;
     c=_c;
     speed=20;
+    radius = s;
   }
  
   void display() {

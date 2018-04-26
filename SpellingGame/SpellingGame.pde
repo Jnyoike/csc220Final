@@ -3,10 +3,10 @@ Maze maze;
 Joe jo;
 Ann ann;
 Dictionary dict;
-String word = "CAT";
-Rachel rachel = new Rachel(0, 0, 85, 2);
+String word = "CAT"; //test word
+//Rachel rachel = new Rachel(0, 0, 85, 2);
 Character[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-public Map<Character, PImage> letters = new TreeMap<Character, PImage>();
+public Map<Character, PImage> letters = new TreeMap<Character, PImage>(); //treemap of images and letters
 
 //PFont font;
 
@@ -17,21 +17,23 @@ int mazeIndex=0;
  
 boolean finished;
 long timer;
- 
 int secretMazeSize;
 PImage img;
+PImage img1;
 void setup() {
   size(650,800); //size of window
   //size(screen.width,screen.height);
   //font = loadFont("Osaka-60.vlw");
   smooth();
-  //background(255,245,235); //sets the background color
+  background(255,245,235); //sets the background color
   maze = new Maze(width/2-300,(height/2-300)+50,600,mazeSizes[0]); //new maze created
   jo = new Joe(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
   dict = new Dictionary("farm_animals.txt");
-  //println(dict);
+  //dict.display(dict.pickVal());
+  
   finished = false;
   timer = millis(); //start the timer
+  /*
   //load images and create the Map
   for (Character c: alphabet){
     String imgName = "GameLetters/"+ c +".png";
@@ -40,7 +42,7 @@ void setup() {
     
   }
   
-  //println(letters);
+  //println(letters);*/
 }
 void draw() {
  
@@ -53,6 +55,10 @@ void draw() {
       
       background(255);
       maze.display();
+      fill(255, 255, 0);
+      rect(width/2-300,(height/2-290)-100,600,125);
+      
+      
  
       //indicate destination cell
       fill(200,255,200);
@@ -60,11 +66,21 @@ void draw() {
       strokeWeight(3);
       ellipse(maze.destinationX+maze.step/2,maze.destinationY+maze.step/2,3*maze.step/4+2,3*maze.step/4+2);
  
+      
+      //test image
+      letterImage try1 = new letterImage(maze.coordX, maze.coordY, maze.step, "A.png");
+      try1.display();
+      //dict.display();
+      //ArrayList<Integer> coordxy = maze.pickRandomCoord();
+      //println(coordxy);
       //show player initial position
       jo.display();
-      //dict.display();
       
-       
+       //check for collission
+       if (try1.x+50 == jo.x && try1.y+50 == jo.y){
+         try1.remove();
+         println("collision");
+       }
  
       if (jo.x>maze.destinationX && jo.y>maze.destinationY) {
         finished = true;
@@ -82,6 +98,7 @@ void draw() {
       text("you win!\nhit space for\na new maze",width/2,height/2);
     }
   }
+  //dict.display(dict.pickVal());
 }
  
 void keyPressed() {
@@ -102,6 +119,7 @@ void keyPressed() {
       if (!walls[3]) jo.place(min(width-maze.step/2,jo.x+maze.step),jo.y);
     }
   }
+  /*
   else {
     if (key == ' ') {
       background(255,245,235);
@@ -109,10 +127,11 @@ void keyPressed() {
       maze.reset(mazeSizes[mazeIndex]);
       jo.resize(3*maze.step/4);
       jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
+      dict.display();
     }
   }
  
-  //secret maze generation
+  secret maze generation
   if (key == 'n') {
     background(255,245,235);
     secretMazeSize+=10;
@@ -120,5 +139,6 @@ void keyPressed() {
     jo.resize(3*maze.step/4);
     jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
   }
+  **/
 }
   
