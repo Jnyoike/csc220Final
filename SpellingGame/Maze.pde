@@ -20,6 +20,8 @@ class Maze {
   int[] cellStack = new int[1];
   int step;
   boolean complete;
+  ArrayList<ArrayList<Integer>> soln_path;
+  ArrayList<Integer> coordinates;
   
  /**constructor*/
   Maze(int _x, int _y, int _w, int _ca) {
@@ -29,6 +31,7 @@ class Maze {
     cellsAcross=_ca;
  
     step = w/cellsAcross;
+    //println("step = "+ step);
     totalCells = cellsAcross*cellsAcross;
     visitedCells = 1;
     currentCell = totalCells-1;
@@ -42,16 +45,6 @@ class Maze {
         cells.add(c);
       }
     }
-     xyList =  new ArrayList<ArrayList<Integer>>();
-     for (int i = 0; i< cells.size(); i++){
-       ArrayList<Integer> coord = new ArrayList<Integer>();
-       Cell c = cells.get(i);
-       Integer x = new Integer (c.x);
-       Integer y = new Integer (c.y);
-       coord.add(x);
-       coord.add(y);
-       xyList.add(coord);
-     }
     complete = false;
  
     Cell lastCell=(Cell) cells.get(cells.size()-1);
@@ -65,11 +58,7 @@ class Maze {
   
   
   
-    Random random = new Random();
     
-    int randomNum = random.nextInt(xyList.size() - 0+ 1)+ 0;
-    coordX = xyList.get(randomNum).get(0);
-    coordY = xyList.get(randomNum).get(1);
     
   
   }  
@@ -82,6 +71,7 @@ class Maze {
     for (int i = cells.size()-1; i >=0; i--) {
       cells.remove(i);
     }
+    
    //remake the maze 
     for (int i = 0; i < cellsAcross; i++) {
       for (int j=0; j < cellsAcross; j++) {
@@ -111,11 +101,16 @@ class Maze {
   }
  
  //display maze when the display function is called.
-  void display() {
+  void display(String[] list) {
     for (int i = 0; i < cells.size(); i++) {
       Cell c = (Cell) cells.get(i);
       c.display(step/16); 
     }
+    for (String s: list){
+      String name = s+".png";
+        letterImage try1 = new letterImage(maze.step, name);
+        try1.display();
+      }
     //text = new Text(txt);
     //text.display();
   
@@ -184,7 +179,7 @@ class Maze {
             visitedCells++;
             if (visitedCells==totalCells) {
               complete=true;
-              println(millis()-timer);
+              //println(millis()-timer);
             }
             currentCell = neighbors[i];
             cellStack = append(cellStack,currentCell);
@@ -207,6 +202,45 @@ class Maze {
       currentCell = cellStack[cellStack.length-1];
       //shows the solution to the maze for aesthetics
       cellStack = shorten(cellStack);
+      //printArray(cellStack);
+      printArray(cellStack);
+    //solution path generator
+    soln_path = new ArrayList<ArrayList<Integer>>();
+    for (int i =0; i<cellStack.length; i++){
+      Cell c = cells.get(cellStack[i]);
+      int x = c.x;
+      int y = c.y;
+      ArrayList<Integer> xy = new ArrayList<Integer>();
+      xy.add(x);
+      xy.add(y);
+      println(soln_path);
+      soln_path.add(xy);
+      //Null Pointer Exception arising here??????????????????????
+      //println(jo.x);
+      println("cell x = "+ x);
     }
+    //list of all cells that are not in the solution path
+    xyList =  new ArrayList<ArrayList<Integer>>();
+     for (int i = 0; i< cells.size(); i++){
+       ArrayList<Integer> coord = new ArrayList<Integer>();
+       Cell c = cells.get(i);
+       Integer x = new Integer (c.x);
+       Integer y = new Integer (c.y);
+       
+       coord.add(x);
+       coord.add(y);
+       if (!soln_path.contains(coord)){
+         xyList.add(coord);
+       }
+     }
+    }
+    
+  }
+  //pick a random coordinate from the list of coordinates that are not part of the soln path
+  ArrayList<Integer> pickRandomCoord(){
+    Random random = new Random();
+    int randomNum = random.nextInt(xyList.size() - 1)+ 0;
+    coordinates = xyList.get(randomNum);
+    return coordinates;
   }
 }

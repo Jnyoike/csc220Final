@@ -1,9 +1,10 @@
 //initializing variables
 Maze maze;
-Joe jo;
-Ann ann;
+//Joe jo;
+Ann jo;
 Dictionary dict;
-String word = "CAT"; //test word
+String word = "CAT"; 
+String[] word_list = word.split("");//test word
 //Rachel rachel = new Rachel(0, 0, 85, 2);
 Character[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 public Map<Character, PImage> letters = new TreeMap<Character, PImage>(); //treemap of images and letters
@@ -22,17 +23,14 @@ PImage img;
 PImage img1;
 void setup() {
   size(650,650); //size of window
-  //size(screen.width,screen.height);
-  //font = loadFont("Osaka-60.vlw");
-  smooth();
   background(255,245,235); //sets the background color
   maze = new Maze(width/2-300,(height/2-300),600,mazeSizes[0]); //new maze created
-  jo = new Joe(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
+  jo = new Ann(maze.x+maze.step/2, maze.y+maze.step/2,3*maze.step/4,color(255,127,0));
   dict = new Dictionary("farm_animals.txt");
-  //dict.display(dict.pickVal());
+  
   
   finished = false;
-  timer = millis(); //start the timer
+  //timer = millis(); //start the timer
   /*
   //load images and create the Map
   for (Character c: alphabet){
@@ -43,9 +41,11 @@ void setup() {
   }
   
   //println(letters);*/
+  
 }
 void draw() {
- 
+  
+
   if (!maze.complete) {
     maze.routeStep();
   }
@@ -54,41 +54,33 @@ void draw() {
     if (!finished) {
       
       background(255);
-      maze.display();
-      //fill(255, 255, 0);
-      //rect(width/2-300,(height/2-290)-100,600,125);
+      maze.display(word_list);
       
-      
- 
       //indicate destination cell
       fill(200,255,200);
       stroke(0,255,0);
       strokeWeight(3);
       ellipse(maze.destinationX+maze.step/2,maze.destinationY+maze.step/2,3*maze.step/4+2,3*maze.step/4+2);
  
-      
-      //test image
-      letterImage try1 = new letterImage(maze.coordX, maze.coordY, maze.step, "A.png");
-      try1.display();
-      //dict.display();
-      //ArrayList<Integer> coordxy = maze.pickRandomCoord();
-      //println(coordxy);
       //show player initial position
       jo.display();
       
        //check for collission
-       if (try1.x+50 == jo.x && try1.y+50 == jo.y){
-         try1.remove();
-         println("collision");
-       }
+       int[] difference = {0,13,20,25,30,35};
+       //if (try1.x+(50-difference[0]) == jo.x && try1.y+(50- difference[0]) == jo.y){
+        // try1.isDrawn = false;
+         //try1.remove();
+       //}
+       //println(try1.x+(50-difference[0]));
  
       if (jo.x>maze.destinationX && jo.y>maze.destinationY) {
         finished = true;
       }
+      
     }
     else {
       noStroke();
-      fill(127,255,127,10);
+      fill(255,255,140,10);
       rect(0,0,width,height);
       fill(255);
       rect(width/6,height/2-125,4*width/6,250);
@@ -119,26 +111,28 @@ void keyPressed() {
       if (!walls[3]) jo.place(min(width-maze.step/2,jo.x+maze.step),jo.y);
     }
   }
-  /*
+  
   else {
-    if (key == ' ') {
-      background(255,245,235);
-      mazeIndex = (mazeIndex+1) % mazeSizes.length;
-      maze.reset(mazeSizes[mazeIndex]);
-      jo.resize(3*maze.step/4);
-      jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
-      dict.display();
-    }
+    //if (key == ' ') {
+      //background(255,245,235);
+      //mazeIndex = (mazeIndex+1) % mazeSizes.length;
+      //maze = new Maze(width/2-300,(height/2-300),600, mazeSizes[0]);
+      //draw();
+      //maze.reset(mazeSizes[mazeIndex]);
+      //jo.resize(3*maze.step/4);
+      //jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
+      //dict.display();
+    //}
   }
  
-  secret maze generation
-  if (key == 'n') {
-    background(255,245,235);
-    secretMazeSize+=10;
-    maze.reset(secretMazeSize);
-    jo.resize(3*maze.step/4);
-    jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
-  }
-  **/
+  //secret maze generation
+  //if (key == 'n') {
+    //CREATE A NEW MAZE
+    //background(255,245,235);
+    //secretMazeSize+=10;
+    //maze.reset(secretMazeSize);
+    //jo.resize(3*maze.step/4);
+    //jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
+  //}
 }
   

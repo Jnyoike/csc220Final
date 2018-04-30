@@ -39,5 +39,9 @@ class Dictionary{
   String pickKey(){
     return "hey";
   }
+  void placeWordOnMaze(String word){
+    
+    
+  }
   
 }
