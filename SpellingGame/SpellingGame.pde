@@ -67,9 +67,9 @@ void draw() {
       
        //check for collission
        int[] difference = {0,13,20,25,30,35};
-       //if (try1.x+(50-difference[0]) == jo.x && try1.y+(50- difference[0]) == jo.y){
+       //if (maze.C.x+(50-difference[0]) == jo.x && maze.C.y+(50- difference[0]) == jo.y){
         // try1.isDrawn = false;
-         //try1.remove();
+        // maze.C.remove(); 
        //}
        //println(try1.x+(50-difference[0]));
  
@@ -113,16 +113,16 @@ void keyPressed() {
   }
   
   else {
-    //if (key == ' ') {
-      //background(255,245,235);
-      //mazeIndex = (mazeIndex+1) % mazeSizes.length;
+    if (key == ' ') {
+      background(255,245,235);
+      mazeIndex = (mazeIndex+1) % mazeSizes.length;
       //maze = new Maze(width/2-300,(height/2-300),600, mazeSizes[0]);
       //draw();
-      //maze.reset(mazeSizes[mazeIndex]);
-      //jo.resize(3*maze.step/4);
-      //jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
-      //dict.display();
-    //}
+      maze.reset(mazeSizes[mazeIndex]);
+      jo.resize(3*maze.step/4);
+      jo.place(maze.x+ maze.step/2, maze.y+maze.step/2);
+      println("Size = " + maze.cells.size());
+    }
   }
  
   //secret maze generation

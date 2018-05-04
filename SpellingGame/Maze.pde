@@ -22,6 +22,9 @@ class Maze {
   boolean complete;
   ArrayList<ArrayList<Integer>> soln_path;
   ArrayList<Integer> coordinates;
+  letterImage C;
+  letterImage A;
+  letterImage T;
   
  /**constructor*/
   Maze(int _x, int _y, int _w, int _ca) {
@@ -54,7 +57,8 @@ class Maze {
     destinationY=y+w-step;
     //println(x, y);
     //println(destinationX, destinationY);
-  
+    //println(xyList);
+    
   
   
   
@@ -106,11 +110,7 @@ class Maze {
       Cell c = (Cell) cells.get(i);
       c.display(step/16); 
     }
-    for (String s: list){
-      String name = s+".png";
-        letterImage try1 = new letterImage(maze.step, name);
-        try1.display();
-      }
+    
     //text = new Text(txt);
     //text.display();
   
@@ -213,11 +213,11 @@ class Maze {
       ArrayList<Integer> xy = new ArrayList<Integer>();
       xy.add(x);
       xy.add(y);
-      println(soln_path);
+      //println(soln_path);
       soln_path.add(xy);
       //Null Pointer Exception arising here??????????????????????
       //println(jo.x);
-      println("cell x = "+ x);
+      //println("cell x = "+ x);
     }
     //list of all cells that are not in the solution path
     xyList =  new ArrayList<ArrayList<Integer>>();

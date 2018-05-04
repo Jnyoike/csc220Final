@@ -5,20 +5,21 @@ public class letterImage {
   public PImage img;
  //pass ub filename 
  //load the list of cells? 
-  public int x= maze.pickRandomCoord().get(0);
-  public int y= maze.pickRandomCoord().get(1);
+  public int x;
+  public int y;
   public int w;
   
-  letterImage(int _w, String filename) {
+  letterImage(int _x, int _y, int _w, String filename) {
     img = loadImage(filename); 
-    
+    x = _x;
+    y = _y;
     w = _w;
     //image(imgA, x, y);
   }
   
   void display() {
     if (isDrawn) {
-      noLoop();
+      //noLoop();
       img.resize(w,w);
       image(img, x, y);
      
