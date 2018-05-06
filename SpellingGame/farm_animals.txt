@@ -1,0 +1,17 @@
+Cat:Meows
+Cow:Gives us milk and leather
+Dog:An animal that barks
+Pig:An animal that oinks
+Duck:swims in water
+Hen:gives us eggs
+Bee:produces honey
+Ox:used to plough land
+Peacock:Its a really beautiful bird found on our farms
+Sheep:gives us wool
+Goat:gives us cheese
+Horse:neighs
+Llama:cousin of the camel
+Goose:Swims and flies
+Camel:has two humps
+Donkey:Used to work 
+Turkey:Eaten during thanksgiving
