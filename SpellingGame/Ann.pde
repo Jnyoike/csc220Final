@@ -1,4 +1,8 @@
+/**
+* Creates the pink cute character of our game
+*/
 class Ann{
+  //initialize variables
   int x;
   int y;
   int destinationX;
@@ -6,9 +10,8 @@ class Ann{
   int s;
   color c;
   int radius;
- 
   int speed;
- 
+  /**constructor*/
   Ann(int _x, int _y, int _s, color _c) {
     x=_x;
     y=_y;
@@ -19,7 +22,7 @@ class Ann{
     speed=20;
     radius = s;
   }
-
+/**display the character on the canvas*/
 void display() {
     if (x<destinationX)x=min(destinationX,x+speed);
     else if (x>destinationX) x=max(destinationX,x-speed);
@@ -49,24 +52,14 @@ void display() {
     strokeWeight(2);
     arc(x,y+s/6,s/6,s/6,0,PI);
     
-    //line(185,225,190,220);
     noStroke();
     fill(#e547d3);
     triangle(x,y-s/1.5,x+s/6,y-s/3,x-s/6,y-s/3);
     triangle(x+s/6,y-s/1.6,x,y-s/3,x+s/3,y-s/3);
     triangle(x-s/6,y-s/1.6,x,y-s/3,x-s/3,y-s/3);
-    
-    //feet 
-    //fill(#070707);
-    //ellipse(x+50,y+60,25,50);
   
 }
-
-  //void resize(int _s) {
- 
-   // s=_s;
-  //}
- 
+ /**place the character on the screen*/
   void place(int _x, int _y) {
     
     x=_x;
@@ -74,7 +67,7 @@ void display() {
     destinationX=_x;
     destinationY=_y;
   }
- 
+  /**move the character*/
   void placeTravel(int _x, int _y) {
     destinationX=_x;
     destinationY=_y;

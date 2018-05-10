@@ -1,17 +1,17 @@
-Cat:Meows
-Cow:Gives us milk and leather
-Dog:An animal that barks
-Pig:An animal that oinks
-Duck:swims in water
-Hen:gives us eggs
-Bee:produces honey
-Ox:used to plough land
-Peacock:Its a really beautiful bird found on our farms
-Sheep:gives us wool
-Goat:gives us cheese
-Horse:neighs
-Llama:cousin of the camel
-Goose:Swims and flies
-Camel:has two humps
-Donkey:Used to work 
-Turkey:Eaten during thanksgiving
+Cat:a domestic animal that meows
+Cow:a farm animal that gives us milk and beef
+Dog:a domestic animal that barks
+Pig:a farm animal that oinks and gives us pork
+Duck:an animal that quacks and swims in water
+Hen:a farm animal gives us eggs for breakfast
+Bee:an animal that produces honey and sometimes stings!
+Ox:a farm animal that has horns and used to plough land, found on the Chinese lunar calendar!
+Peacock:a really beautiful bird found on our farms
+Sheep:an farm animal that gives us wool and says baa
+Goat:a farm animal that gives us cheese and is known for eating trash
+Horse:an animal that we can ride and says neigh
+Llama:an animal that spits at you and is a cousin of the camel
+Goose:an animal that swims and flies and is scarier than a duck
+Camel:a pack animal that has two humps and is often found in the desert
+Donkey:a pack animal that is used to work, smaller than a horse
+Turkey:an bird that is often eaten during thanksgiving

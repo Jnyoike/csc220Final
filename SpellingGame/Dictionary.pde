@@ -2,46 +2,28 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 /**
-*contains the words and their descriptions
+* creates an ArrayList of the words and their 
+* descriptions that acts as the description
 */
 class Dictionary{
   String[] lines;
-  public Map<String, String> farm_animals = new TreeMap<String, String>();
-  //String filename = "farm_animals.txt";
+  ArrayList <ArrayList<String>> farm_animals;
   Dictionary(String filename){
+    farm_animals = new ArrayList<ArrayList<String>>();
     lines = loadStrings(filename);
+    //populate the dictionary
     for (int i=0; i< lines.length; i++){
+      ArrayList<String> list = new ArrayList<String>(); 
       String[] elements = split(lines[i], ":");
       String key1 = elements[0];
       String value = elements[1];
-      //printArray(elements);
-      farm_animals.put(key1, value);
+      list.add(key1);
+      list.add(value);
+      farm_animals.add(list);  
       
       
     }
-    //println(farm_animals);
-    
-      
-    //pickOne();
   }
-  void display(){
-    //text(value2, 70,80);
-    
-    
-  }
-  String pickVal(){
-    Map.Entry<String, String>[] keys = farm_animals.entrySet().toArray(new Map.Entry[0]);
-    Random rand = new Random();
-    Map.Entry<String, String> keyValue = keys[rand.nextInt(keys.length)];
-    String value2 = keyValue.getValue();
-    return value2;
-  }
-  String pickKey(){
-    return "hey";
-  }
-  void placeWordOnMaze(String word){
-    
-    
-  }
+  
   
 }

@@ -1,5 +1,8 @@
 import java.util.*;
 class Maze {
+  /**
+  * A class that creates the maze and resets it when a new maze is needed.
+  */
  //initialize variables
   int x;
   int y;
@@ -7,10 +10,8 @@ class Maze {
   int cellsAcross;
   ArrayList<Cell> cells; //initialize an arraylist of the cells
   
-  int coordX;
-  int coordY;
   ArrayList<ArrayList<Integer>> xyList;
-  
+  //destination cell x and y
   int destinationX;
   int destinationY;
   
@@ -22,9 +23,7 @@ class Maze {
   boolean complete;
   ArrayList<ArrayList<Integer>> soln_path;
   ArrayList<Integer> coordinates;
-  letterImage C;
-  letterImage A;
-  letterImage T;
+  
   
  /**constructor*/
   Maze(int _x, int _y, int _w, int _ca) {
@@ -55,13 +54,6 @@ class Maze {
  
     destinationX=x+w-step;
     destinationY=y+w-step;
-    //println(x, y);
-    //println(destinationX, destinationY);
-    //println(xyList);
-    
-  
-  
-  
     
     
   
@@ -110,26 +102,18 @@ class Maze {
       Cell c = (Cell) cells.get(i);
       c.display(step/16); 
     }
-    //C = new letterImage(xyList.get(1).get(0), xyList.get(1).get(1), maze.step, "C.png");
-    //C.display();
-    //A = new letterImage(xyList.get(6).get(0), xyList.get(6).get(1), maze.step, "A.png");
-    //A.display();
-    //T = new letterImage(xyList.get(8).get(0), xyList.get(8).get(1), maze.step, "T.png");
-    //T.display();
-    //text = new Text(txt);
-    //text.display();
+    
   
   }
- 
+  /**detects the cell we are currently in*/
   boolean[] travelThrough(int _x, int _y) {
  
     int index = cellsAcross*((_y-y)/step) + ((_x-x)/step);
-    //println(index);
     Cell inCell = (Cell) cells.get(index);
     inCell.visited = min(255,inCell.visited+10);
     return inCell.walls;
   }
- 
+  /**draws the walls and creates the routes based on whether the wall is set to true or false*/
   void routeStep() {
  
     //find the current cell's neighbors
@@ -184,13 +168,12 @@ class Maze {
             visitedCells++;
             if (visitedCells==totalCells) {
               complete=true;
-              //println(millis()-timer);
             }
             currentCell = neighbors[i];
             cellStack = append(cellStack,currentCell);
             
             //animation as maze is being drawn
-            //stroke(0,0,255,5+250*thisCell.x/width);
+            stroke(0,0,255,5+250*thisCell.x/width);
             noStroke();
             strokeWeight(step/2);
             int w = width/(cellsAcross*2);
@@ -205,10 +188,7 @@ class Maze {
     }
     else {
       currentCell = cellStack[cellStack.length-1];
-      //shows the solution to the maze for aesthetics
       cellStack = shorten(cellStack);
-      //printArray(cellStack);
-      //printArray(cellStack);
     //solution path generator
     soln_path = new ArrayList<ArrayList<Integer>>();
     for (int i =0; i<cellStack.length; i++){
@@ -220,9 +200,6 @@ class Maze {
       xy.add(y);
       //println(soln_path);
       soln_path.add(xy);
-      //Null Pointer Exception arising here??????????????????????
-      //println(jo.x);
-      //println("cell x = "+ x);
     }
     //list of all cells that are not in the solution path
     xyList =  new ArrayList<ArrayList<Integer>>();
